@@ -92,19 +92,65 @@ class SortingRobot:
         """
         return self._light == "ON"
 
+
+    """
+    You may NOT:
+        - modify any pre-defined robot methods.
+        - store any variables. (=)
+        - access any instance variables directly. (self._anything)
+        - use any Python libraries or class methods. (sorted(), etc.)
+
+    - Tests should run in far less than 1 second 
+        - recursive have better runtimes than iterative -- merge and quicksort (0(n * log n)))
+            - not in place so bubble (selection is out of place)
+    - We discussed a sorting method this week that might be useful. Which one?
+    - The robot has exactly one bit of memory: its light. Why is this important? (quicksort does not require the extra space Merge Sort uses)
+
+    """
+
     def sort(self):
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # turn on robot
+        self.set_light_on()
+
+        while self.light_is_on():
+            self.set_light_off()
+            
+            # if robots not at end
+            while self.can_move_right():
+                self.swap_item()
+                self.move_right()
+                # held item's value is greater than current position
+                if self.compare_item() == 1:
+                    # turn on robot to make swap
+                    self.set_light_on()
+                    self.swap_item()
+                    # go back to place smaller item at current position
+                    self.move_left()
+                    self.swap_item()
+                    # go forward and hold larger item
+                    self.move_right()
+                else:
+                    # held item's value is equal to or less than current position
+                    # go back to original position and swap
+                    self.move_left()
+                    self.swap_item()
+                    # go forward and take the larger value
+                    self.move_right()
+          
+            # if we're at the end of list, go to beginning
+            while self.can_move_left():
+                self.move_left()
+
 
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
 
-    l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1, 45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
+    l = [15, 41, 58, 49]
 
     robot = SortingRobot(l)
 
