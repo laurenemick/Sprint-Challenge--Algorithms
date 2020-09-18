@@ -16,7 +16,7 @@ while (0 < 8):
 while (4 < 8): 
       a = 8
 
-b) Runtime is O(n2) because runtime grows exponentially with the size of the input (nested loop).
+b) Runtime is O(n log n) because runtime grows exponentially with the size of the input (nested loop).
 
 
 c) Runtime is O(n) because there will be one operation per recursive call.
