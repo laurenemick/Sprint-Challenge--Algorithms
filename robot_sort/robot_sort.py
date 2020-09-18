@@ -1,11 +1,3 @@
-"""
-You may NOT:
-- modify any pre-defined robot methods.
-- store any variables. (=)
-- access any instance variables directly. (self._anything)
-- use any Python libraries or class methods. (sorted(), etc.)
-
-"""
 class SortingRobot:
     def __init__(self, l):
         """
@@ -100,12 +92,41 @@ class SortingRobot:
         """
         return self._light == "ON"
 
+"""
+You may NOT:
+    - modify any pre-defined robot methods.
+    - store any variables. (=)
+    - access any instance variables directly. (self._anything)
+    - use any Python libraries or class methods. (sorted(), etc.)
+
+- Tests should run in far less than 1 second (recursive have better runtimes than iterative -- merge and quicksort (0(n * log n)))
+- We discussed a sorting method this week that might be useful. Which one?
+- The robot has exactly one bit of memory: its light. Why is this important? (quicksort does not require the extra space Merge Sort uses)
+
+Q's:
+- Any repeat #'s?
+
+"""
     def sort(self):
         """
         Sort the robot's list.
         """
+        # if robots not at end
+        while self.can_move_right():
+            # pick up item at current position and move to the next position
+            self.swap.item()
+            self.move_right()
 
-        pass
+            # held item's value is the same or greater than current position
+            if compare_item() <= 1:
+                self.swap_item()
+
+
+            # held item's value is less than current position
+            if compare_item() == -1:
+                self.
+
+
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
