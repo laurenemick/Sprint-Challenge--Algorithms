@@ -92,40 +92,61 @@ class SortingRobot:
         """
         return self._light == "ON"
 
-"""
-You may NOT:
-    - modify any pre-defined robot methods.
-    - store any variables. (=)
-    - access any instance variables directly. (self._anything)
-    - use any Python libraries or class methods. (sorted(), etc.)
 
-- Tests should run in far less than 1 second (recursive have better runtimes than iterative -- merge and quicksort (0(n * log n)))
-- We discussed a sorting method this week that might be useful. Which one?
-- The robot has exactly one bit of memory: its light. Why is this important? (quicksort does not require the extra space Merge Sort uses)
+    """
+    You may NOT:
+        - modify any pre-defined robot methods.
+        - store any variables. (=)
+        - access any instance variables directly. (self._anything)
+        - use any Python libraries or class methods. (sorted(), etc.)
 
-Q's:
-- Any repeat #'s?
+    - Tests should run in far less than 1 second 
+        - recursive have better runtimes than iterative -- merge and quicksort (0(n * log n)))
+            - not in place so bubble (selection is out of place)
+    - We discussed a sorting method this week that might be useful. Which one?
+    - The robot has exactly one bit of memory: its light. Why is this important? (quicksort does not require the extra space Merge Sort uses)
 
-"""
+    """
+
     def sort(self):
         """
         Sort the robot's list.
         """
-        # if robots not at end
-        while self.can_move_right():
-            # pick up item at current position and move to the next position
-            self.swap.item()
-            self.move_right()
+        # pick up first item and turn on robot
+        self.swap_item()
+        self.set_light_on()
 
-            # held item's value is the same or greater than current position
-            if compare_item() <= 1:
+        while self.light_is_on():
+            self.set_light_off()
+            
+            # if robots not at end
+            while self.can_move_right:
+                # move to the next position
+                self.move_right()
+
+                # held item's value is greater than current position
+                if self.compare_item() == 1:
+                    # turn on robot to make swap
+                    self.set_light_on()
+                    self.swap_item()
+                    # go back to place smaller item at current position
+                    self.move_left()
+                    self.swap_item()
+                    # go forward and hold larger item
+                    self.move_right()
+                    self.swap_item()
+
+                # held item's value is equal to or less than current position
+                # go back to original position and swap
+                self.move_left()
                 self.swap_item()
-
-
-            # held item's value is less than current position
-            if compare_item() == -1:
-                self.
-
+                # go forward and take the larger value
+                self.move_right()
+                self.swap_item()
+                
+            # if we're at the end of list, go to beginning
+            while self.can_move_left:
+                self.move_left()
 
 
 if __name__ == "__main__":
