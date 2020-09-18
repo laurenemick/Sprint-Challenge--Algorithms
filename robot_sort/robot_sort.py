@@ -1,3 +1,11 @@
+"""
+You may NOT:
+- modify any pre-defined robot methods.
+- store any variables. (=)
+- access any instance variables directly. (self._anything)
+- use any Python libraries or class methods. (sorted(), etc.)
+
+"""
 class SortingRobot:
     def __init__(self, l):
         """
@@ -96,9 +104,8 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
 
+        pass
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
